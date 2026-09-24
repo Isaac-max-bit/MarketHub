@@ -1,0 +1,936 @@
+/* =====================================
+   COLORES
+===================================== */
+
+:root {
+
+    --negro: #080808;
+
+    --negro-2: #111111;
+
+    --negro-3: #181818;
+
+    --vino: #8f2948;
+
+    --vino-claro: #b84d6d;
+
+    --dorado: #c9a96e;
+
+    --blanco: #ffffff;
+
+    --gris: #888888;
+
+    --borde: rgba(255,255,255,.10);
+
+}
+
+
+/* =====================================
+   REINICIO
+===================================== */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family: 'Poppins', sans-serif;
+
+    color: var(--blanco);
+
+    background:
+
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(143,41,72,.25),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(201,169,110,.10),
+            transparent 35%
+        ),
+
+        var(--negro);
+
+}
+
+
+/* =====================================
+   CONTENEDOR
+===================================== */
+
+.container {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+}
+
+
+/* =====================================
+   TARJETA PRINCIPAL
+===================================== */
+
+.login-card {
+
+    width: 100%;
+
+    max-width: 1000px;
+
+    min-height: 620px;
+
+    display: grid;
+
+    grid-template-columns: 45% 55%;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: var(--negro-2);
+
+    border: 1px solid var(--borde);
+
+    box-shadow:
+
+        0 30px 80px rgba(0,0,0,.7);
+
+}
+
+
+/* =====================================
+   PANEL IZQUIERDO
+===================================== */
+
+.brand-panel {
+
+    position: relative;
+
+    min-height: 620px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+
+        linear-gradient(
+            rgba(0,0,0,.35),
+            rgba(70,10,30,.90)
+        ),
+
+        url("img/lenceria.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+/* =====================================
+   CONTENIDO IZQUIERDO
+===================================== */
+
+.brand-content {
+
+    padding: 30px;
+
+}
+
+
+.logo {
+
+    width: 70px;
+
+    height: 70px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--dorado);
+
+    color: var(--dorado);
+
+    background: rgba(0,0,0,.3);
+
+}
+
+
+.logo i {
+
+    font-size: 25px;
+
+}
+
+
+.brand-content h1 {
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 68px;
+
+    font-weight: 600;
+
+}
+
+
+.line {
+
+    width: 55px;
+
+    height: 1px;
+
+    margin: 20px auto;
+
+    background: var(--dorado);
+
+}
+
+
+.brand-content p {
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 22px;
+
+    font-style: italic;
+
+    color: #ddd;
+
+}
+
+
+.brand-content span {
+
+    display: block;
+
+    margin-top: 25px;
+
+    color: var(--dorado);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* =====================================
+   PANEL DERECHO
+===================================== */
+
+.form-panel {
+
+    position: relative;
+
+    padding: 55px 65px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #121212,
+            #090909
+        );
+
+    overflow: hidden;
+
+}
+
+
+/* =====================================
+   CHECKBOX PRINCIPAL
+===================================== */
+
+.toggle {
+
+    display: none;
+
+}
+
+
+/* =====================================
+   SELECTOR
+===================================== */
+
+.switch {
+
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    border-bottom: 1px solid var(--borde);
+
+    margin-bottom: 35px;
+
+}
+
+
+.tab {
+
+    width: 50%;
+
+    padding: 12px;
+
+    text-align: center;
+
+    color: #666;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+.login-tab {
+
+    color: white;
+
+}
+
+
+.indicator {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -1px;
+
+    width: 50%;
+
+    height: 2px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--vino),
+            var(--vino-claro)
+        );
+
+    transition: .4s;
+
+}
+
+
+/* =====================================
+   CONTENEDOR FORMULARIOS
+===================================== */
+
+.forms {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 440px;
+
+}
+
+
+/* =====================================
+   FORMULARIO
+===================================== */
+
+.form {
+
+    position: absolute;
+
+    width: 100%;
+
+    top: 0;
+
+    left: 0;
+
+    transition: .45s ease;
+
+}
+
+
+/* LOGIN */
+
+.login-form {
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+}
+
+
+/* REGISTRO */
+
+.register-form {
+
+    opacity: 0;
+
+    transform: translateX(40px);
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================
+   CAMBIO A REGISTRO
+===================================== */
+
+.toggle:checked ~ .switch .indicator {
+
+    transform: translateX(100%);
+
+}
+
+
+.toggle:checked ~ .switch .login-tab {
+
+    color: #666;
+
+}
+
+
+.toggle:checked ~ .switch .register-tab {
+
+    color: white;
+
+}
+
+
+.toggle:checked ~ .forms .login-form {
+
+    opacity: 0;
+
+    transform: translateX(-40px);
+
+    pointer-events: none;
+
+}
+
+
+.toggle:checked ~ .forms .register-form {
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+    pointer-events: auto;
+
+}
+
+
+/* =====================================
+   TITULOS
+===================================== */
+
+.welcome {
+
+    color: var(--dorado);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.form h2 {
+
+    margin-top: 7px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 42px;
+
+    font-weight: 600;
+
+}
+
+
+.description {
+
+    margin-top: 7px;
+
+    margin-bottom: 25px;
+
+    color: var(--gris);
+
+    font-size: 11px;
+
+}
+
+
+/* =====================================
+   INPUT
+===================================== */
+
+.input-group {
+
+    margin-bottom: 18px;
+
+}
+
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #ccc;
+
+    font-size: 10px;
+
+}
+
+
+.input-box {
+
+    position: relative;
+
+}
+
+
+.input-box i {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #666;
+
+    font-size: 13px;
+
+}
+
+
+.input-box input {
+
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 42px;
+
+    border: 1px solid var(--borde);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: var(--negro-2);
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 11px;
+
+    transition: .3s;
+
+}
+
+
+.input-box input::placeholder {
+
+    color: #555;
+
+}
+
+
+.input-box input:focus {
+
+    border-color: var(--vino-claro);
+
+    box-shadow:
+
+        0 0 0 3px rgba(143,41,72,.15);
+
+}
+
+
+/* =====================================
+   CONTRASEÑA
+===================================== */
+
+.password-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.password-title a {
+
+    color: var(--dorado);
+
+    font-size: 9px;
+
+    text-decoration: none;
+
+}
+
+
+/* =====================================
+   RECORDAR
+===================================== */
+
+.remember {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    color: #777;
+
+    font-size: 9px;
+
+}
+
+
+.remember input {
+
+    accent-color: var(--vino);
+
+}
+
+
+.remember a {
+
+    color: var(--dorado);
+
+    text-decoration: none;
+
+}
+
+
+/* =====================================
+   BOTÓN
+===================================== */
+
+.button {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--vino),
+            #641c32
+        );
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+.button i {
+
+    margin-left: 10px;
+
+}
+
+
+.button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+
+        0 10px 25px rgba(143,41,72,.3);
+
+}
+
+
+/* =====================================
+   SEPARADOR
+===================================== */
+
+.or {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 22px 0;
+
+    color: #555;
+
+    font-size: 9px;
+
+}
+
+
+.or::before,
+.or::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--borde);
+
+}
+
+
+/* =====================================
+   REDES
+===================================== */
+
+.social {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+}
+
+
+.social button {
+
+    height: 40px;
+
+    border: 1px solid var(--borde);
+
+    border-radius: 8px;
+
+    background: #111;
+
+    color: #aaa;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+.social button:hover {
+
+    color: white;
+
+    border-color: var(--vino);
+
+}
+
+
+.social i {
+
+    margin-right: 6px;
+
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+
+    position: absolute;
+
+    bottom: 18px;
+
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #444;
+
+    font-size: 8px;
+
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 800px) {
+
+    .login-card {
+
+        max-width: 550px;
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .brand-panel {
+
+        min-height: 250px;
+
+    }
+
+
+    .brand-content h1 {
+
+        font-size: 52px;
+
+    }
+
+
+    .form-panel {
+
+        padding: 40px;
+
+    }
+
+}
+
+
+/* =====================================
+   CELULAR
+===================================== */
+
+@media (max-width: 500px) {
+
+    .container {
+
+        padding: 0;
+
+    }
+
+
+    .login-card {
+
+        min-height: 100vh;
+
+        border-radius: 0;
+
+        border: none;
+
+    }
+
+
+    .brand-panel {
+
+        min-height: 200px;
+
+    }
+
+
+    .brand-content h1 {
+
+        font-size: 45px;
+
+    }
+
+
+    .brand-content p {
+
+        font-size: 18px;
+
+    }
+
+
+    .logo {
+
+        width: 55px;
+
+        height: 55px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .form-panel {
+
+        padding: 30px 22px;
+
+    }
+
+
+    .form h2 {
+
+        font-size: 36px;
+
+    }
+
+
+    .social {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
