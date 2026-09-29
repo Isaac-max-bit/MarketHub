@@ -4,6 +4,16 @@ import "./App.css";
 function App() {
   const [isRegister, setIsRegister] = useState(false);
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log("Inicio de sesión");
+  };
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    console.log("Registro");
+  };
+
   return (
     <main className="container">
       <div className="login-card">
@@ -19,6 +29,7 @@ function App() {
           <div className="brand-content">
 
             <div className="title-wrap">
+
               <i className="fa-solid fa-asterisk star"></i>
 
               <h1>Lencería</h1>
@@ -35,6 +46,7 @@ function App() {
                   ry="52"
                 />
               </svg>
+
             </div>
 
             <p>Elegancia que comienza contigo.</p>
@@ -55,186 +67,235 @@ function App() {
 
             {/* LOGIN */}
             {!isRegister && (
-              <form className="card">
-                <div className="card-header">
-                  <h2 className="card-title">
-                    Iniciar sesión
-                  </h2>
+              <div className="form login-form">
 
-                  <p className="card-description">
-                    Accede a tu cuenta para continuar.
-                  </p>
-                </div>
+                <form
+                  className="card"
+                  autoComplete="off"
+                  onSubmit={handleLogin}
+                >
 
-                <div className="card-content">
+                  <div className="card-header">
 
-                  <div className="input-group">
-                    <label htmlFor="login-email">
-                      Correo electrónico
-                    </label>
+                    <h2 className="card-title">
+                      Iniciar sesión
+                    </h2>
 
-                    <div className="input-box">
-                      <i className="fa-regular fa-envelope"></i>
+                    <p className="card-description">
+                      Accede a tu cuenta para continuar.
+                    </p>
 
-                      <input
-                        id="login-email"
-                        type="email"
-                        placeholder="tu@email.com"
-                        required
-                      />
-                    </div>
                   </div>
 
-                  <div className="input-group">
+                  <div className="card-content">
 
-                    <div className="password-title">
-                      <label htmlFor="login-password">
-                        Contraseña
+                    <div className="input-group">
+
+                      <label htmlFor="login-email">
+                        Correo electrónico
                       </label>
 
-                      <a href="#">
-                        ¿Olvidaste tu contraseña?
-                      </a>
+                      <div className="input-box">
+
+                        <i className="fa-regular fa-envelope"></i>
+
+                        <input
+                          id="login-email"
+                          type="email"
+                          name="email"
+                          placeholder="tu@email.com"
+                          autoComplete="off"
+                          required
+                        />
+
+                      </div>
+
                     </div>
 
-                    <div className="input-box">
-                      <i className="fa-solid fa-lock"></i>
+                    <div className="input-group">
 
-                      <input
-                        id="login-password"
-                        type="password"
-                        placeholder="••••••••"
-                        required
-                      />
+                      <div className="password-title">
+
+                        <label htmlFor="login-password">
+                          Contraseña
+                        </label>
+
+                        <a href="#">
+                          ¿Olvidaste tu contraseña?
+                        </a>
+
+                      </div>
+
+                      <div className="input-box">
+
+                        <i className="fa-solid fa-lock"></i>
+
+                        <input
+                          id="login-password"
+                          type="password"
+                          name="password"
+                          placeholder="••••••••"
+                          autoComplete="new-password"
+                          required
+                        />
+
+                      </div>
+
                     </div>
+
+                    <label className="remember">
+
+                      <input type="checkbox" />
+
+                      <span>
+                        Recordarme
+                      </span>
+
+                    </label>
 
                   </div>
 
-                  <label className="remember">
-                    <input type="checkbox" />
-                    <span>Recordarme</span>
-                  </label>
+                  <div className="card-footer">
 
-                </div>
+                    <button
+                      type="submit"
+                      className="button"
+                    >
+                      Iniciar sesión
+                    </button>
 
-                <div className="card-footer">
+                    <button
+                      type="button"
+                      className="button button-outline"
+                      onClick={() => setIsRegister(true)}
+                    >
+                      Crear cuenta nueva
+                    </button>
 
-                  <button
-                    type="submit"
-                    className="button"
-                  >
-                    Iniciar sesión
-                  </button>
+                  </div>
 
-                  <button
-                    type="button"
-                    className="button button-outline"
-                    onClick={() => setIsRegister(true)}
-                  >
-                    Crear cuenta nueva
-                  </button>
+                </form>
 
-                </div>
-              </form>
+              </div>
             )}
 
             {/* REGISTRO */}
             {isRegister && (
-              <form className="card">
+              <div className="form register-form">
 
-                <div className="card-header">
+                <form
+                  className="card"
+                  autoComplete="off"
+                  onSubmit={handleRegister}
+                >
 
-                  <h2 className="card-title">
-                    Crear cuenta
-                  </h2>
+                  <div className="card-header">
 
-                  <p className="card-description">
-                    Crea tu cuenta y descubre nuestra colección.
-                  </p>
+                    <h2 className="card-title">
+                      Crear cuenta
+                    </h2>
 
-                </div>
+                    <p className="card-description">
+                      Crea tu cuenta y descubre nuestra colección.
+                    </p>
 
-                <div className="card-content">
+                  </div>
 
-                  <div className="input-group">
+                  <div className="card-content">
 
-                    <label htmlFor="reg-nombre">
-                      Nombre completo
-                    </label>
+                    <div className="input-group">
 
-                    <div className="input-box">
-                      <i className="fa-regular fa-user"></i>
+                      <label htmlFor="reg-nombre">
+                        Nombre completo
+                      </label>
 
-                      <input
-                        id="reg-nombre"
-                        type="text"
-                        placeholder="Tu nombre"
-                        required
-                      />
+                      <div className="input-box">
+
+                        <i className="fa-regular fa-user"></i>
+
+                        <input
+                          id="reg-nombre"
+                          type="text"
+                          name="nombre"
+                          placeholder="Tu nombre"
+                          autoComplete="off"
+                          required
+                        />
+
+                      </div>
+
+                    </div>
+
+                    <div className="input-group">
+
+                      <label htmlFor="reg-email">
+                        Correo electrónico
+                      </label>
+
+                      <div className="input-box">
+
+                        <i className="fa-regular fa-envelope"></i>
+
+                        <input
+                          id="reg-email"
+                          type="email"
+                          name="email-registro"
+                          placeholder="tu@email.com"
+                          autoComplete="off"
+                          required
+                        />
+
+                      </div>
+
+                    </div>
+
+                    <div className="input-group">
+
+                      <label htmlFor="reg-password">
+                        Crear contraseña
+                      </label>
+
+                      <div className="input-box">
+
+                        <i className="fa-solid fa-lock"></i>
+
+                        <input
+                          id="reg-password"
+                          type="password"
+                          name="password-registro"
+                          placeholder="••••••••"
+                          autoComplete="new-password"
+                          required
+                        />
+
+                      </div>
+
                     </div>
 
                   </div>
 
-                  <div className="input-group">
+                  <div className="card-footer">
 
-                    <label htmlFor="reg-email">
-                      Correo electrónico
-                    </label>
+                    <button
+                      type="submit"
+                      className="button"
+                    >
+                      Crear cuenta
+                    </button>
 
-                    <div className="input-box">
-                      <i className="fa-regular fa-envelope"></i>
-
-                      <input
-                        id="reg-email"
-                        type="email"
-                        placeholder="tu@email.com"
-                        required
-                      />
-                    </div>
-
-                  </div>
-
-                  <div className="input-group">
-
-                    <label htmlFor="reg-password">
-                      Crear contraseña
-                    </label>
-
-                    <div className="input-box">
-                      <i className="fa-solid fa-lock"></i>
-
-                      <input
-                        id="reg-password"
-                        type="password"
-                        placeholder="••••••••"
-                        required
-                      />
-                    </div>
+                    <button
+                      type="button"
+                      className="button button-outline"
+                      onClick={() => setIsRegister(false)}
+                    >
+                      Ya tengo cuenta
+                    </button>
 
                   </div>
 
-                </div>
+                </form>
 
-                <div className="card-footer">
-
-                  <button
-                    type="submit"
-                    className="button"
-                  >
-                    Crear cuenta
-                  </button>
-
-                  <button
-                    type="button"
-                    className="button button-outline"
-                    onClick={() => setIsRegister(false)}
-                  >
-                    Ya tengo cuenta
-                  </button>
-
-                </div>
-
-              </form>
+              </div>
             )}
 
           </div>
