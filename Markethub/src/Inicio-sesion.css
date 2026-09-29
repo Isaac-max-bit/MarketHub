@@ -1,4 +1,3 @@
-/* ===== COLORES Y FUENTES ===== */
 :root {
   --blanco: #ffffff;
   --petalo: #f3c4c0;
@@ -9,7 +8,8 @@
   --malva: #8a5a6b;
   --champagne: #c6a27c;
   --borde: #ebd3ce;
-  --fuente-titulo: "Cormorant Garamond", Georgia, serif;
+
+  --fuente-titulo: "Luma", "Cormorant Garamond", Georgia, serif;
   --fuente-texto: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
@@ -32,6 +32,7 @@ body {
 }
 
 /* ===== TARJETA PRINCIPAL ===== */
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -52,6 +53,7 @@ body {
 }
 
 /* ===== PANEL IZQUIERDO ===== */
+
 .brand-panel {
   position: relative;
   min-height: 620px;
@@ -59,16 +61,38 @@ body {
   grid-template-rows: auto 1fr auto;
   padding: 36px 32px;
   overflow: hidden;
+
   background:
-    radial-gradient(58% 38% at 72% 6%, rgba(227, 154, 165, 0.95), transparent 72%),
-    radial-gradient(48% 34% at 100% 42%, rgba(217, 132, 150, 0.7), transparent 72%),
-    radial-gradient(46% 30% at 62% 90%, rgba(230, 207, 180, 0.9), transparent 72%),
-    radial-gradient(60% 34% at 0% 96%, rgba(255, 255, 255, 0.95), transparent 72%),
-    radial-gradient(60% 36% at 20% 34%, rgba(255, 255, 255, 0.55), transparent 72%),
+    radial-gradient(
+      58% 38% at 72% 6%,
+      rgba(227, 154, 165, 0.95),
+      transparent 72%
+    ),
+    radial-gradient(
+      48% 34% at 100% 42%,
+      rgba(217, 132, 150, 0.7),
+      transparent 72%
+    ),
+    radial-gradient(
+      46% 30% at 62% 90%,
+      rgba(230, 207, 180, 0.9),
+      transparent 72%
+    ),
+    radial-gradient(
+      60% 34% at 0% 96%,
+      rgba(255, 255, 255, 0.95),
+      transparent 72%
+    ),
+    radial-gradient(
+      60% 36% at 20% 34%,
+      rgba(255, 255, 255, 0.55),
+      transparent 72%
+    ),
     linear-gradient(180deg, var(--seda), var(--petalo));
 }
 
-/* Grano */
+/* ===== GRANO ===== */
+
 .brand-panel::before {
   content: "";
   position: absolute;
@@ -76,7 +100,12 @@ body {
   pointer-events: none;
   opacity: 0.55;
   mix-blend-mode: overlay;
+
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.brand-panel > * {
+  position: relative;
 }
 
 .brand-top,
@@ -84,12 +113,11 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 16px;
+
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  position: relative;
-  z-index: 1;
 }
 
 .brand-top {
@@ -102,14 +130,14 @@ body {
   border-top: 1px solid var(--ciruela);
 }
 
+/* ===== CONTENIDO MARCA ===== */
+
 .brand-content {
   display: grid;
   place-content: center;
   justify-items: center;
   text-align: center;
   padding: 30px 0;
-  position: relative;
-  z-index: 1;
 }
 
 .title-wrap {
@@ -120,6 +148,7 @@ body {
 
 .brand-content h1 {
   position: relative;
+
   font-family: var(--fuente-titulo);
   font-size: 68px;
   font-weight: 500;
@@ -137,10 +166,14 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
+
   width: 116%;
   height: auto;
+
   overflow: visible;
+
   transform: translate(-50%, -50%) rotate(-14deg);
+
   pointer-events: none;
 }
 
@@ -153,59 +186,79 @@ body {
 
 .brand-content p {
   margin-top: 10px;
+
   font-family: var(--fuente-titulo);
   font-size: 22px;
+
   color: var(--vino);
 }
 
 /* ===== PANEL DERECHO ===== */
+
 .form-panel {
   position: relative;
+
   display: flex;
   flex-direction: column;
+
   padding: 55px 65px;
+
   overflow: hidden;
-  background: var(--blanco);
 }
+
+/* ===== FORMULARIOS ===== */
 
 .forms {
   flex: 1;
+
   display: grid;
   align-items: center;
+
   padding-bottom: 20px;
 }
 
-/* Transiciones controladas por React */
 .form {
   grid-area: 1 / 1;
-  transition: 0.45s ease;
+
+  width: 100%;
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
 }
 
-.login-form.hidden {
-  opacity: 0;
-  transform: translateX(-40px);
-  pointer-events: none;
-}
+/* LOGIN VISIBLE */
 
-.login-form.active {
+.login-form {
   opacity: 1;
   transform: translateX(0);
   pointer-events: auto;
 }
 
-.register-form.hidden {
+/* REGISTRO OCULTO */
+
+.register-form {
   opacity: 0;
   transform: translateX(40px);
   pointer-events: none;
 }
 
-.register-form.active {
+/* ===== CUANDO ESTÁ EN REGISTRO ===== */
+
+.forms.show-register .login-form {
+  opacity: 0;
+  transform: translateX(-40px);
+  pointer-events: none;
+}
+
+.forms.show-register .register-form {
   opacity: 1;
   transform: translateX(0);
   pointer-events: auto;
 }
 
 /* ===== FORMULARIO ===== */
+
 .card {
   display: flex;
   flex-direction: column;
@@ -219,6 +272,7 @@ body {
 
 .card-header h2 {
   font-family: var(--fuente-titulo);
+
   font-size: 42px;
   font-weight: 500;
   line-height: 1.1;
@@ -226,6 +280,7 @@ body {
 
 .card-description {
   color: var(--malva);
+
   font-size: 14px;
   line-height: 1.5;
 }
@@ -241,9 +296,12 @@ body {
 }
 
 /* ===== CAMPOS ===== */
+
 .input-group label {
   display: block;
+
   margin-bottom: 7px;
+
   font-size: 13px;
   font-weight: 500;
 }
@@ -254,9 +312,12 @@ body {
 
 .input-box i {
   position: absolute;
+
   left: 15px;
   top: 50%;
+
   transform: translateY(-50%);
+
   color: var(--malva);
   font-size: 14px;
 }
@@ -264,13 +325,18 @@ body {
 .input-box input {
   width: 100%;
   height: 50px;
+
   padding: 0 42px;
+
   border: 1px solid var(--borde);
   outline: none;
+
   background: var(--blanco);
   color: var(--ciruela);
+
   font-family: var(--fuente-texto);
   font-size: 14px;
+
   transition: 0.3s;
 }
 
@@ -280,8 +346,12 @@ body {
 
 .input-box input:focus {
   border-color: var(--rosa-palo);
-  box-shadow: 0 0 0 3px rgba(243, 196, 192, 0.55);
+
+  box-shadow:
+    0 0 0 3px rgba(243, 196, 192, 0.55);
 }
+
+/* ===== CONTRASEÑA ===== */
 
 .password-title {
   display: flex;
@@ -292,6 +362,7 @@ body {
 .password-title a,
 .remember a {
   color: var(--rosa-palo);
+
   font-size: 12px;
   text-decoration: none;
 }
@@ -300,13 +371,16 @@ body {
   text-decoration: underline;
 }
 
+/* ===== RECORDAR ===== */
+
 .remember {
   display: flex;
   align-items: center;
   gap: 8px;
+
   color: var(--malva);
+
   font-size: 12px;
-  cursor: pointer;
 }
 
 .remember input {
@@ -314,20 +388,27 @@ body {
 }
 
 /* ===== BOTONES ===== */
+
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 100%;
   height: 50px;
+
   border: none;
+
   background: var(--rosa-palo);
   color: var(--blanco);
+
   font-family: var(--fuente-texto);
   font-size: 14px;
   font-weight: 500;
+
   cursor: pointer;
+
   transition: 0.3s;
-  width: 100%;
 }
 
 .button:hover {
@@ -341,6 +422,7 @@ body {
 
 .button-outline {
   border: 1px solid var(--borde);
+
   background: var(--blanco);
   color: var(--ciruela);
 }
@@ -351,59 +433,82 @@ body {
 }
 
 /* ===== FOOTER ===== */
+
 footer {
   position: absolute;
+
   bottom: 18px;
   left: 0;
+
   width: 100%;
+
   text-align: center;
+
   color: var(--malva);
+
   font-size: 11px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== TABLET ===== */
+
 @media (max-width: 800px) {
   .login-card {
     max-width: 550px;
+
     grid-template-columns: 1fr;
   }
+
   .brand-panel {
     min-height: 300px;
+
     padding: 28px 24px;
   }
+
   .brand-content h1 {
     font-size: 52px;
   }
+
   .form-panel {
     padding: 40px;
   }
 }
 
+/* ===== CELULAR ===== */
+
 @media (max-width: 500px) {
   .container {
     padding: 0;
   }
+
   .login-card {
     min-height: 100vh;
+
     border: none;
     box-shadow: none;
   }
+
   .brand-panel {
     min-height: 240px;
+
     padding: 22px 20px;
   }
+
   .brand-bottom {
     display: none;
   }
+
   .brand-content h1 {
     font-size: 44px;
   }
+
   .brand-content p {
     font-size: 18px;
   }
+
   .form-panel {
     padding: 30px 22px;
   }
+
   .card-header h2 {
     font-size: 36px;
   }
