@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Inicio-sesion.css";
+'import "./Inicio-sesion.css";'
 
 function InicioSesion() {
   const [mostrarRegistro, setMostrarRegistro] = useState(false);
